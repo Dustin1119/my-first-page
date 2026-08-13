@@ -11,14 +11,51 @@
       justify-content: center;
       align-items: center;
       background: #111;
+      font-family: sans-serif;
+      color: white;
+    }
+    .view {
+      display: none;
+      text-align: center;
+    }
+    .view.active {
+      display: block;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
     }
     img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;}
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
-  <img src="photo.jpg" alt="展示图片">
+
+  <div id="question" class="view active">
+    <p>Do you want to see a beautiful photo?</p>
+    <button onclick="showView('photo')">Yes</button>
+    <button onclick="showView('fine')">No</button>
+  </div>
+
+  <div id="photo" class="view">
+    <img src="photo.jpg" alt="展示图片">
+  </div>
+
+  <div id="fine" class="view">
+    <p>It's fine</p>
+  </div>
+
+  <script>
+    function showView(id) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
